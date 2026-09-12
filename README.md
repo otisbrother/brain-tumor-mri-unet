@@ -13,7 +13,9 @@
   <img src="https://img.shields.io/badge/Dice-0.867-success" alt="Dice Score">
 </p>
 
-> ⚠️ **Cảnh báo y khoa:** Dự án chỉ phục vụ học tập và nghiên cứu. Kết quả không được sử dụng để chẩn đoán, điều trị hoặc thay thế nhận định của bác sĩ.
+<p align="center">
+  <img src="docs/images/mri_prediction_comparison.png" alt="Kết quả phân đoạn khối u não trên ảnh cộng hưởng từ MRI với U-Net" width="95%">
+</p>
 
 ---
 
@@ -156,6 +158,10 @@ flowchart LR
 | T1ce | Sau tiêm thuốc tương phản | Không |
 | T2 | Nước và phù nề sáng | Không |
 
+<p align="center">
+  <img src="docs/images/mri_modalities.png" alt="Bộ 4 chuỗi xung MRI Não BraTS 2021 và nhãn khối u" width="95%">
+</p>
+
 ### 4.2 Định dạng NIfTI (.nii.gz)
 
 **NIfTI** là định dạng chuẩn quốc tế cho ảnh y khoa 3D, chứa:
@@ -164,6 +170,10 @@ flowchart LR
 - **Affine matrix** (hệ tọa độ không gian)
 
 → Nhờ spacing mà hệ thống tính được diện tích (cm²) và thể tích (cm³) thực tế.
+
+<p align="center">
+  <img src="docs/images/brain_slices_axial_progression.png" alt="Mặt cắt Axial đa lát cắt qua thể tích não 3D" width="95%">
+</p>
 
 ### 4.3 Bộ dữ liệu BraTS 2021
 
@@ -435,6 +445,20 @@ Threshold được tìm **chỉ trên validation set** (187 bệnh nhân):
 | 0.55 | 0.8678 |
 | 0.60 | 0.8677 |
 
+### 7.5 Trực quan hóa kết quả phân đoạn trên ảnh MRI thực tế
+
+<p align="center">
+  <img src="docs/images/mri_prediction_comparison.png" alt="Chi tiết kết quả phân đoạn U-Net trên các lát cắt MRI Não" width="95%">
+</p>
+
+- **Lát cắt u lớn (Slice 74):** Mô hình đạt Dice **0.912**, đường viền phân đoạn bao bọc chính xác toàn bộ vùng lõi u và phù nề quanh u.
+- **Lát cắt u trung bình (Slice 62):** Mô hình định vị chính xác vị trí khối u trung tâm, độ nhạy cao và đường bao sát với nhãn của bác sĩ.
+- **Lát cắt não bình thường (Slice 35):** Mô hình dự đoán **0 pixel u** (Dice 1.000), chứng minh khả năng kháng báo động giả (không bị False Positive) trên các vùng mô não lành.
+- **Quy ước màu đối chiếu trên ảnh Chồng lấp (Overlay):**
+  - 🟩 **Màu xanh lá (True Positive):** Vùng U-Net dự đoán trùng khớp hoàn toàn với bác sĩ gán nhãn.
+  - 🟥 **Màu đỏ (False Positive):** Vùng U-Net dự đoán thừa ngoài nhãn bác sĩ.
+  - 🟦 **Màu xanh dương (False Negative):** Vùng nhãn bác sĩ mà mô hình bỏ sót.
+
 ---
 
 ## 8. Ứng dụng Streamlit
@@ -631,4 +655,3 @@ pytest -q
 
 Mã nguồn tuân theo giấy phép trong [LICENSE](LICENSE). Dữ liệu BraTS có điều khoản sử dụng riêng; người dùng phải tuân thủ giấy phép và quy định của nguồn dữ liệu.
 
-**Dự án chỉ phục vụ nghiên cứu và giáo dục, không dành cho chẩn đoán hoặc quyết định điều trị.**
