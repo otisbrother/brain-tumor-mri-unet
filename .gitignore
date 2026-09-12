@@ -1,0 +1,48 @@
+# Medical data (large, not committed)
+data/raw/*
+data/extracted/*
+data/processed/*
+data/metadata/*.csv
+data/splits/*.txt
+
+# Model checkpoints (large)
+models/*.pt
+
+# Predictions (large NIfTI files)
+outputs/predictions/*
+outputs/.matplotlib/
+outputs/slice-index/
+
+# Keep directory placeholders
+!data/**/.gitkeep
+!models/.gitkeep
+!outputs/**/.gitkeep
+
+# Allow result files to be committed
+!outputs/evaluation/summary.json
+!outputs/evaluation/threshold_search.json
+!outputs/evaluation/per_patient.csv
+!outputs/figures/*.png
+!outputs/logs/training_history.csv
+
+# Source bundle
+brain-tumor-source.zip
+
+# Python and local configuration
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+kaggle.json
+.kaggle/
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

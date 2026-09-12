@@ -1,0 +1,10 @@
+torch>=2.2
+numpy>=1.26
+pandas>=2.1
+nibabel>=5.2
+matplotlib>=3.8
+streamlit>=1.31
+PyYAML>=6.0
+tqdm>=4.66
+pytest>=8.0
+kaggle>=1.6

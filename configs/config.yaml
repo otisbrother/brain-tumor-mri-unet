@@ -1,0 +1,66 @@
+project:
+  name: brain-tumor-mri-unet-kaggle-fast
+  seed: 42
+data:
+  root_dir: data/extracted
+  metadata_csv: data/metadata/dataset_metadata.csv
+  splits_dir: data/splits
+  modalities:
+  - flair
+  target_size: 240
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  keep_negative_slices: true
+  negative_to_positive_ratio: 0.5
+  cache_size: 1
+  index_cache_dir: outputs/slice-index
+augmentation:
+  enabled: true
+  horizontal_flip_probability: 0.5
+  rotation_degrees: 0.0
+  intensity_scale_limit: 0.1
+  gaussian_noise_std: 0.02
+model:
+  name: unet
+  in_channels: 1
+  out_channels: 1
+  base_channels: 16
+  bilinear: true
+training:
+  epochs: 5
+  batch_size: 32
+  num_workers: 0
+  pin_memory: false
+  mixed_precision: true
+  multi_gpu: true
+  deterministic: false
+  early_stopping:
+    enabled: true
+    patience: 2
+  overfit_steps: 200
+optimizer:
+  name: adamw
+  learning_rate: 0.0001
+  weight_decay: 1.0e-05
+scheduler:
+  name: reduce_on_plateau
+  factor: 0.5
+  patience: 2
+loss:
+  bce_weight: 0.5
+  dice_weight: 0.5
+  smooth: 1.0
+inference:
+  threshold: 0.45
+  batch_size: 64
+  minimum_positive_pixels: 1
+postprocessing:
+  enabled: true
+  min_component_pixels: 20
+paths:
+  model_dir: models
+  output_dir: outputs
+  best_checkpoint: models/best_model.pt
+  last_checkpoint: models/last_model.pt
+  pending_checkpoint: models/train_pending.pt
