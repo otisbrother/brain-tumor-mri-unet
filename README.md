@@ -1,19 +1,6 @@
 # 🧠 Xây dựng hệ thống phân đoạn tự động khối u não trên ảnh cộng hưởng từ sử dụng mạng U-Net
 
 <p align="center">
-  <strong>Đồ án sử dụng PyTorch, U-Net 2D và bộ dữ liệu BraTS 2021</strong><br>
-  Phân đoạn vùng u toàn phần (whole tumor) trên ảnh MRI FLAIR
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/PyTorch-2.0+-red?logo=pytorch" alt="PyTorch">
-  <img src="https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit" alt="Streamlit">
-  <img src="https://img.shields.io/badge/Dataset-BraTS_2021-green" alt="BraTS">
-  <img src="https://img.shields.io/badge/Dice-0.867-success" alt="Dice Score">
-</p>
-
-<p align="center">
   <img src="docs/images/mri_prediction_comparison.png" alt="Kết quả phân đoạn khối u não trên ảnh cộng hưởng từ MRI với U-Net" width="95%">
 </p>
 
