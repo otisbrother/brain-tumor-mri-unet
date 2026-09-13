@@ -1,9 +1,5 @@
 # 🧠 Xây dựng hệ thống phân đoạn tự động khối u não trên ảnh cộng hưởng từ sử dụng mạng U-Net
 
-<p align="center">
-  <img src="docs/images/mri_prediction_comparison.png" alt="Kết quả phân đoạn khối u não trên ảnh cộng hưởng từ MRI với U-Net" width="95%">
-</p>
-
 ---
 
 ## 📋 Mục lục
